@@ -802,6 +802,9 @@ public void open(){
 	}
 	public Balorazio createBalorazio(Integer idBalorazio, int puntuazioa, String komentarioa, String data, String NAN, Integer rideNumber) throws reviewAlreadyExistsException, ratingMoreThanFiveException{
 		try {
+			if(NAN==null||rideNumber==null||rideNumber<0) {
+				return null;
+			}
 			db.getTransaction().begin();
 			Traveler t= db.find(Traveler.class,NAN );
 			Ride r=db.find(Ride.class,rideNumber );
